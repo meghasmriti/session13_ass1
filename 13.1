@@ -18,7 +18,7 @@ Transformations which creates a new dataset from the previous RDD and Actions, w
 
 4.What do you understand by Transformations in Spark?
 
-Transformations are kind of operations which will transform your RDD data from one form to another. And when you apply this operation on any RDD, you will get a new RDD with transformed data (RDDs in Spark are immutable, Remember????). Operations like map, filter, flatMap are transformations.
+Transformations are kind of operations which will transform your RDD data from one form to another. And when you apply this operation on any RDD, you will get a new RDD with transformed data .Operations like map, filter, flatMap are transformations.
 
 Now there is a point to be noted here and that is when you apply the transformation on any RDD it will not perform the operation immediately. It will create a DAG(Directed Acyclic Graph) using the applied operation, source RDD and function used for transformation. And it will keep on building this graph using the references till you apply any action operation on the last lined up RDD. That is why the transformation in Spark are lazy.
 
