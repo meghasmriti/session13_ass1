@@ -1,0 +1,27 @@
+1.What is RDD
+
+RDD is a logical reference of a dataset which is partitioned across many server machines in the cluster. RDDs are Immutable and are self recovered in case of failure. dataset could be the data loaded externally by the user.RDD stands for Resilient Distributed Dataset. Its Resilient, means that it can be recomputed in case Spark looses a part of the data. 
+
+
+2.Define Partitions.
+
+A partition is a logical chunk of a large distributed data set.
+n Spark, data is stored in partitions of the RDDs and store in worker nodes (datanodes) which are computed in parallel across all the nodes.
+Spark manages data using partitions that helps parallelize distributed data processing with minimal network traffic for sending data between executors.
+
+
+
+3.What operations does RDD support?
+
+RDDs perform two types of operations: 
+Transformations which creates a new dataset from the previous RDD and Actions, which return a value to the driver program after performing the computation on the dataset.
+
+4.What do you understand by Transformations in Spark?
+
+Transformations are kind of operations which will transform your RDD data from one form to another. And when you apply this operation on any RDD, you will get a new RDD with transformed data (RDDs in Spark are immutable, Remember????). Operations like map, filter, flatMap are transformations.
+
+Now there is a point to be noted here and that is when you apply the transformation on any RDD it will not perform the operation immediately. It will create a DAG(Directed Acyclic Graph) using the applied operation, source RDD and function used for transformation. And it will keep on building this graph using the references till you apply any action operation on the last lined up RDD. That is why the transformation in Spark are lazy.
+
+5.Define Actions
+
+This kind of operation will also give you another RDD but this operation will trigger all the lined up transformation on the base RDD (or in the DAG) and than execute the action operation on the last RDD. Operations like collect, count, first, saveAsTextFile are actions.
